@@ -6,24 +6,23 @@ function validateForm() {
   let cbCSS = document.querySelector(".CSS").checked;
   let cbJS = document.querySelector(".JS").checked;
   let male = document.querySelector(".male").checked;
-  let female = document.querySelector(".female").checked;
-  let gender = document.getElementsByName("gender");
   let skills = document.getElementsByName("skills");
 
   localStorage.setItem("firstName", firstName.value);
   localStorage.setItem("lastName", lastName.value);
   localStorage.setItem("city", city.value);
-  localStorage.setItem("male", male);
-  localStorage.setItem("female", female);
-  localStorage.setItem("HTML", cbHTML);
-  localStorage.setItem("JS", cbJS);
-  localStorage.setItem("CSS", cbCSS);
+  localStorage.setItem("gender", male == true ? "Male" : "Female");
+  localStorage.setItem("HTML", cbHTML == true ? "HTML" : "");
+  localStorage.setItem("CSS", cbCSS == true ? "CSS" : "");
+  localStorage.setItem("JS", cbJS == true ? "JS" : "");
 
   console.log(localStorage);
 
-  // console.log("Records Array is: ", records);
-
   var allRecords = localStorage.getItem("allRecords");
+  let storedGender = localStorage.getItem("gender");
+  let storedHTMLSkil = localStorage.getItem("HTML");
+  let storedCSSSkill = localStorage.getItem("CSS");
+  let storedJSSkill = storedJSSkill;
 
   if (!allRecords) {
     localStorage.setItem(
@@ -32,6 +31,14 @@ function validateForm() {
         {
           firstName: firstName.value,
           lastName: lastName.value,
+          city: city.value,
+          gender: storedGender,
+          skills:
+            storedHTMLSkil +
+            (storedCSSSkill == "CSS" ? ", " : "") +
+            storedCSSSkill +
+            (storedJSSkill == "JS" ? ", " : "") +
+            storedJSSkill,
         },
       ])
     );
@@ -41,6 +48,14 @@ function validateForm() {
     prevValue.push({
       firstName: firstName.value,
       lastName: lastName.value,
+      city: city.value,
+      gender: storedGender,
+      skills:
+        storedHTMLSkil +
+        (storedCSSSkill == "CSS" ? ", " : "") +
+        storedCSSSkill +
+        (storedJSSkill == "JS" ? ", " : "") +
+        storedJSSkill,
     });
     localStorage.setItem("allRecords", JSON.stringify(prevValue));
   }
@@ -75,12 +90,12 @@ function validateForm() {
     document.getElementById("cityError").innerHTML = "Good";
   }
 
-  if (!(gender[0].checked || gender[1].checked)) {
-    genderError = "Please select a gender";
-    document.getElementById("genderError").innerHTML = genderError;
-  } else {
-    document.getElementById("genderError").innerHTML = "Good";
-  }
+  // if (!(gender[0].checked || gender[1].checked)) {
+  //   genderError = "Please select a gender";
+  //   document.getElementById("genderError").innerHTML = genderError;
+  // } else {
+  //   document.getElementById("genderError").innerHTML = "Good";
+  // }
 
   if (!(skills[0].checked || skills[1].checked || skills[2].checked)) {
     genderError = "Please select at least 1 skill";
