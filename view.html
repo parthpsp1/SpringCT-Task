@@ -13,67 +13,24 @@
 </head>
 
 <body>
-
-  <div class="row custom-row g-0">
-    <div class="col-2 text-center">
-      <nav class="navbar">
-        <li class="links">
-          <a href="index.html"><i class="las la-home"></i>Home</a>
-        </li>
-        <li class="links">
-          <a href="form.html"><i class="las la-plus"></i>Add</a>
-        </li>
-        <li class="links">
-          <a href="view.html"><i class="las la-eye"></i>View</a>
-        </li>
-      </nav>
-    </div>
-    <div class="col-10 data-div text-center">
-      <h1 class="text-center">
-        View Data
-      </h1>
-      <table class="table table-bordered">
-        <th class="text-center">First Name</th>
-        <th class="text-center">Last Name</th>
-        <th class="text-center">City</th>
-        <th class="text-center">Gender</th>
-        <th colspan="3" class="text-center">Skills</th>
-        <tr>
-          <td id="firstName"></td>
-          <td id="lastName"></td>
-          <td id="city"></td>
-          <td id="gender"></td>
-          <td id="HTML"></td>
-          <td id="CSS"></td>
-          <td id="JS"></td>
-        </tr>
-      </table>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title">First Name: </div>
-              <div class="card-text" id="firstName-card"></div>
-              <div class="card-title">Last Name: </div>
-              <div class="card-text" id="lastName-card"></div>
-              <div class="card-text"></div>
-              <div class="card-title">City: </div>
-              <div class="card-text" id="city-card"></div>
-              <div class="card-text"></div>
-              <div class="card-title">Gender: </div>
-              <div class="card-text" id="gender-card"></div>
-              <div class="card-text"></div>
-              <div class="card-title">Skills: </div>
-              <div class="card-text" id="HTML-card"></div>
-              <div class="card-text" id="CSS-card"></div>
-              <div class="card-text" id="JS-card"></div>
-              <div class="card-text"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="form.html">Add</a>
+    <a class="active" href="view.html">View</a>
   </div>
+
+  <div class="content">
+    <header>
+      <h1 class="text-center">Data</h1>
+    </header>
+
+    <!--Dynamic Table-->
+    <table id="table" class="table table-stripped text-center"></table>
+  </div>
+
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin="anonymous"></script>
@@ -81,7 +38,7 @@
     integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
     crossorigin="anonymous"></script>
   <script defer src="script.js"></script>
-  <script defer src="viewData.js"></script>
+  <script defer src="view-data.js"></script>
 </body>
 
 </html>
