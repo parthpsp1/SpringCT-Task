@@ -10,8 +10,6 @@ function validateForm() {
   let gender = document.getElementsByName("gender");
   let skills = document.getElementsByName("skills");
 
-  var records = [];
-
   localStorage.setItem("firstName", firstName.value);
   localStorage.setItem("lastName", lastName.value);
   localStorage.setItem("city", city.value);
@@ -21,22 +19,31 @@ function validateForm() {
   localStorage.setItem("JS", cbJS);
   localStorage.setItem("CSS", cbCSS);
 
-  records.push(firstName.value);
-  records.push(lastName.value);
-  records.push(city.value);
-  records.push(male);
-  records.push(female);
-  records.push(cbHTML);
-  records.push(cbCSS);
-  records.push(cbJS);
+  console.log(localStorage);
 
-  console.log("Records Array is: ", records);
+  // console.log("Records Array is: ", records);
 
-  localStorage.setItem("allRecords", JSON.stringify(records));
+  var allRecords = localStorage.getItem("allRecords");
 
-  let storedRecords = JSON.parse(localStorage.getItem("allRecords"));
-
-  console.log(storedRecords);
+  if (!allRecords) {
+    localStorage.setItem(
+      "allRecords",
+      JSON.stringify([
+        {
+          firstName: firstName.value,
+          lastName: lastName.value,
+        },
+      ])
+    );
+  } else {
+    var prevValue = JSON.parse(localStorage.getItem("allRecords"));
+    console.log("Prev Value: ", prevValue);
+    prevValue.push({
+      firstName: firstName.value,
+      lastName: lastName.value,
+    });
+    localStorage.setItem("allRecords", JSON.stringify(prevValue));
+  }
 
   let isValid = false;
   let firstNameError;

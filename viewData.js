@@ -1,3 +1,6 @@
+var dummy = localStorage.getItem("allRecords");
+console.log("ALl Records: ", JSON.parse(dummy));
+
 document.getElementById("firstName").innerHTML =
   localStorage.getItem("firstName");
 
